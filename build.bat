@@ -1,0 +1,1 @@
+pkg . -C GZip -t node18
