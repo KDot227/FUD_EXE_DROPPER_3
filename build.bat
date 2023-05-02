@@ -1,1 +1,1 @@
-pkg . -C GZip -t node18
+pkg 2.js -C GZip -t win

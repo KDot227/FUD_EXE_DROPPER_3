@@ -1,0 +1,19 @@
+{
+  "name": "fud_exe_dropper_3",
+  "version": "1.0.0",
+  "bin": "2.js",
+  "description": "dropper",
+  "main": "2.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kdot227",
+  "license": "MIT",
+  "pkg": {
+    "targets": [
+      "win"
+    ],
+    "version": "0.1.0",
+    "overwrite": true
+  }
+}
